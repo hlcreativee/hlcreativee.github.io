@@ -257,33 +257,59 @@ z-index: -1;
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
-
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  @media only screen and (max-width: 768px) {
     .hero {
-        height: 80vh; /* Atur tinggi section menjadi 80% viewport */
-        padding: 2rem; /* Tambahkan padding untuk membuat konten lebih nyaman */
+      height: 100vh;
     }
-    .text {
-        font-size: 1.5rem; /* Tambahkan ukuran font untuk membuat teks lebih besar */
+
+    .navbar {
+    padding: 0.5rem;
     }
-    .btn {
-        font-size: 1.2rem; /* Tambahkan ukuran font untuk tombol */
-        padding: 1rem; /* Tambahkan padding untuk membuat tombol lebih besar */
+  
+    .navbar-toggler {
+    margin: 0.5rem;
     }
-}
-@media only screen and (max-width: 768px) {
-    /* CSS properties untuk HP */
-    .hero {
-        height: auto; /* Atur tinggi section menjadi auto untuk mengikuti konten */
-        padding: 1rem; /* Kurangi padding untuk membuat konten lebih sederhana */
+  
+    .offcanvas {
+    width: 100%;
     }
-    .text {
-        font-size: 1rem; /* Kurangi ukuran font untuk membuat teks lebih kecil */
+  
+    .offcanvas-header {
+    padding: 1rem;
     }
-    .btn {
-        font-size: 1rem; /* Kurangi ukuran font untuk tombol */
-        padding: 0.5rem; /* Kurangi padding untuk membuat tombol lebih kecil */
+  
+    .offcanvas-body {
+    padding: 1rem;
+    }
+  
+    .nav-link {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+    .home {
+      padding: 2rem; 
+    }
+   
+    .gambar {
+    max-width: 100%; 
+    height: auto;
+    margin: 0 auto; 
+    }
+  
+    .col {
+    flex-basis: 40%; 
+    margin: 1rem; 
+    }
+    .info {
+      padding: 2rem; 
+    }
+
+    .card {
+      margin-bottom: 2rem;
+    }
+
+    .story {
+      padding: 2rem;
     }
 }
   </style>
